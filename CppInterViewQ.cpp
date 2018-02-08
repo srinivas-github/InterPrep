@@ -11,7 +11,7 @@ example:
     };
 
 
-2. Whenever we wnat to initiaize reference member of a class.
+2. Whenever we want to initiaize reference member of a class.
 example:
     class Int
     {
