@@ -1,0 +1,22 @@
+1. FIFO stands for First in , first out. Similar to pipe. It is a one-way flow of data, 
+   with firsts byte written to it being the first byte read from it.
+2. Unlike pipes, FIFO has a name associated with it, allowing unrelated processes to access a
+   single FIFO.
+3. FIFO's are called as "named pipes"
+4. FIFO is created by mknod system call.
+   int mknod(char *pathname, int mode, int dev);
+   
+   "pathname" is normal unix pathname
+   "mode" is normal file access mode
+   "dev" is normally ignored
+================================================================================================
+Streams and Messages:
+
+1. Pipes and FIFO's uses stream I/O model, which is normal in unix. There are no record boundaries -- 
+   reads and writes do not examine the data at all. 
+2. A process reading 100 bytes from pipe, for example, cannot tell if the process that wrote the data
+   into the pipe did a single write of 100 bytes, five writes of 20 bytes, or two writes of 50 bytes.
+   It could also happen that one process writes 55 bytes into the pipe, followed by another process
+   writting 45 bytes. 
+
+
