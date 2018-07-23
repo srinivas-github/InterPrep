@@ -21,4 +21,53 @@
       534976 becomes: 534967
    4. Sort the numbers in descending order after the found position:
       534967 is the answer
+ =============================================================================================================================
+ 
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+
+void swap(char* a, char* b)
+{
+    char temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void findNextHigher(char number[], int n)
+{
+    int i,  j;
+    
+    for( i = n-1; i > 0; i++)
+    {
+        if (number[i] > number[i-1])
+            break;
+    }
+    
+    if (i==0)
+    {
+        printf("Not possible\n");
+        return ;
+    }
+    
+    int x = number[i-1];
+    int smallest = i;
+    
+    for (j = i+1; j < n; j++)
+    {
+        if (number[j] > x && number[j] < number[smallest])
+            smallest = j;
+    }
+    swap(&number[i-1], &number[smallest]);
+    std::sort(number+i, number+n);
+    printf("Next higher number: %s\n", number);
+    
+}
+
+int main()
+{
+    char number[] =  "1234";//"534976";
+    int n = strlen(number);
+    findNextHigher(number, n);
+    return 0;
+}
 
